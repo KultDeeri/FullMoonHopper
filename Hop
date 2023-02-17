@@ -1,4 +1,7 @@
-print('Loaded.')
+StarterGui:SetCore("SendNotification", {
+	Title = "MoonLoader";
+	Text = "Finished Loading MoonHopper."
+})
 repeat task.wait() until game:IsLoaded()
 task.wait(2.5)
 local PlaceID = game.PlaceId
@@ -69,7 +72,7 @@ local Asset = "http://www.roblox.com/asset/?id="
 local Http = game:GetService("HttpService")
 WebHookURL = _G.WebHook
 
-local function SendPost()
+local function SendPost(desc)
 local response = syn.request(
     {
         Url = WebHookURL,
@@ -81,7 +84,7 @@ local response = syn.request(
         ['content'] = "",
         ['embeds'] = {{
             ['title'] = "MoonHopper",
-            ["description"] = "Moon is Full Moon or Close!",
+            ["description"] = desc,
             ["type"] = "rich",
             ["color"] = tonumber(0xffffff),
         }}
@@ -97,7 +100,8 @@ local Moons = {
 if _G.AlmostFullAllowed then
 	if Sky.MoonTextureId == Moons.Full or Sky.MoonTextureId == Moons.AlmostFull then
 		print("Full Moon or Almost Full Moon!")
-		SendPost()
+		if WebHookURL == nil or WebHookURL == "" then return end
+		SendPost("Moon is Full Moon or Close!")
 	else
 		print('No Full Moon or Close.')
 		Teleport()
@@ -106,7 +110,8 @@ end
 if not _G.AlmostFullAllowed then
 	if Sky.MoonTextureId == Moons.Full then
 		print('Full Moon!')
-		SendPost()
+		if WebHookURL == nil or WebHookURL == "" then return end
+		SendPost("Full Moon!")
 	else
 		print('No Full Moon.')
 		Teleport()
