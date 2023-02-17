@@ -66,6 +66,28 @@ end
 local LG = game:GetService("Lighting")
 local Sky = LG:WaitForChild("Sky")
 local Asset = "http://www.roblox.com/asset/?id="
+local Http = game:GetService("HttpService")
+WebHookURL = _G.WebHook
+
+local function SendPost()
+local response = syn.request(
+    {
+        Url = WebHookURL,
+        Method = 'POST',
+        Headers = {
+            ['Content-Type'] = "application/json"
+        },
+    Body = Http:JSONEncode({
+        ['content'] = "",
+        ['embeds'] = {{
+            ['title'] = "MoonHopper",
+            ["description"] = "Moon is Full Moon or Close!",
+            ["type"] = "rich",
+            ["color"] = tonumber(0xffffff),
+        }}
+    })
+    })
+end
 
 local Moons = {
 	["Full"] = Asset.."9709149431",
@@ -75,6 +97,7 @@ local Moons = {
 if _G.AlmostFullAllowed then
 	if Sky.MoonTextureId == Moons.Full or Sky.MoonTextureId == Moons.AlmostFull then
 		print("Full Moon or Almost Full Moon!")
+		SendPost()
 	else
 		print('No Full Moon or Close.')
 		Teleport()
@@ -83,6 +106,7 @@ end
 if not _G.AlmostFullAllowed then
 	if Sky.MoonTextureId == Moons.Full then
 		print('Full Moon!')
+		SendPost()
 	else
 		print('No Full Moon.')
 		Teleport()
