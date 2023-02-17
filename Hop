@@ -1,7 +1,3 @@
-game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "MoonLoader";
-	Text = "Finished Loading MoonHopper."
-})
 print("Loaded.")
 repeat task.wait() until game:IsLoaded()
 task.wait(2.5)
@@ -97,6 +93,11 @@ local Moons = {
 	["Full"] = Asset.."9709149431",
 	["AlmostFull"] = Asset.."9709149052",
 }
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "MoonLoader";
+	Text = "Finished Loading MoonHopper."
+})
 
 if _G.AlmostFullAllowed then
 	if Sky.MoonTextureId == Moons.Full or Sky.MoonTextureId == Moons.AlmostFull then
