@@ -71,9 +71,9 @@ local Moons = {
 	["Full"] = Asset.."9709149431",
 	["AlmostFull"] = Asset.."9709149052",
 }
-AlmostFullAllowed = true
+_G.AlmostFullAllowed = true
 
-if AlmostFullAllowed then
+if _G.AlmostFullAllowed then
 	if Sky.MoonTextureId == Moons.Full or Sky.MoonTextureId == Moons.AlmostFull then
 		print("Full Moon or Almost Full Moon!")
 	else
@@ -81,7 +81,7 @@ if AlmostFullAllowed then
 		Teleport()
 	end
 end
-if not AlmostFullAllowed then
+if not _G.AlmostFullAllowed then
 	if Sky.MoonTextureId == Moons.Full then
 		print('Full Moon!')
 	else
