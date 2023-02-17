@@ -53,14 +53,14 @@ function TPReturner()
 end
 
 function Teleport()
-	game:GetService("RunService").RenderStepped:Connect(function()
-		pcall(function()
+	while task.wait() do
+	pcall(function()
 			TPReturner()
 			if foundAnything ~= "" then
 				TPReturner()
 			end
 		end)
-	end)
+	end
 end
 
 local LG = game:GetService("Lighting")
