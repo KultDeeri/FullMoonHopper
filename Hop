@@ -94,6 +94,8 @@ local Moons = {
 	["AlmostFull"] = Asset.."9709149052",
 }
 
+repeat task.wait() until game:IsLoaded()
+
 game:GetService("StarterGui"):SetCore("SendNotification", {
 	Title = "MoonLoader";
 	Text = "Finished Loading MoonHopper."
