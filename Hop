@@ -1,4 +1,4 @@
-StarterGui:SetCore("SendNotification", {
+game:GetService("StarterGui"):SetCore("SendNotification", {
 	Title = "MoonLoader";
 	Text = "Finished Loading MoonHopper."
 })
@@ -101,6 +101,7 @@ local Moons = {
 if _G.AlmostFullAllowed then
 	if Sky.MoonTextureId == Moons.Full or Sky.MoonTextureId == Moons.AlmostFull then
 		print("Full Moon or Almost Full Moon!")
+		if WebHookURL == nil or WebHookURL == "" then return end
 		SendPost("Moon is Full Moon or Close!")
 	else
 		print('No Full Moon or Close.')
@@ -110,6 +111,7 @@ end
 if not _G.AlmostFullAllowed then
 	if Sky.MoonTextureId == Moons.Full then
 		print('Full Moon!')
+		if WebHookURL == nil or WebHookURL == "" then return end
 		SendPost("Full Moon!")
 	else
 		print('No Full Moon.')
