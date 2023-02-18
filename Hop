@@ -102,7 +102,7 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 })
 
 if _G.AlmostFullAllowed then
-	if Sky.MoonTextureId == Moons.Full or Sky.MoonTextureId == Moons.AlmostFull then
+	if Sky.MoonTextureId == Moons.Full or Sky.MoonTextureId == Moons.AlmostFull and LG.ClockTime > 13 then
 		print("Full Moon or Almost Full Moon!")
 		if WebHookURL == nil or WebHookURL == "" then return end
 		SendPost("Moon is Full Moon or Close!")
@@ -112,7 +112,7 @@ if _G.AlmostFullAllowed then
 	end
 end
 if not _G.AlmostFullAllowed then
-	if Sky.MoonTextureId == Moons.Full then
+	if Sky.MoonTextureId == Moons.Full and LG.ClockTime > 13 then
 		print('Full Moon!')
 		if WebHookURL == nil or WebHookURL == "" then return end
 		SendPost("Full Moon!")
